@@ -6,12 +6,13 @@ import React from 'react';
 import Reciepe from './Reciepe';
 
 class List extends React.Component {
+
   render() {
     var reciepes = [];
 
-    this.props.recipes.forEach(function (recipe, id) {
-      reciepes.push(<Reciepe recipe={recipe} key={id} />);
-    });
+    this.props.recipes.forEach(function (recipe, k) {
+      reciepes.push(<Reciepe remove={this.props.remove.bind(this, k)} recipe={recipe} key={k} />);
+    }.bind(this));
 
     return (
       <div>

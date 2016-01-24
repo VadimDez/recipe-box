@@ -18,6 +18,8 @@ class Reciepe extends React.Component {
         <div>
           {ingridients}
         </div>
+        <button onClick={this.props.remove}>Delete</button>
+        <button>Edit</button>
       </div>
     )
   }
