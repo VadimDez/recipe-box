@@ -4,6 +4,7 @@
 
 import React from 'react';
 import List from './List';
+import Add from './Add';
 
 class Main extends React.Component {
   constructor() {
@@ -44,28 +45,6 @@ class Main extends React.Component {
     });
   }
 
-  /**
-   * On name change
-   * @param e
-   */
-  handleChangeName(e) {
-    this.state.newRecipe.name = e.target.value;
-    this.setState({
-      newRecipe: this.state.newRecipe
-    });
-  }
-
-  /**
-   * On ingridients change
-   * @param e
-   */
-  handleChangeIngridients(e) {
-    this.state.newRecipe.ingridients = e.target.value;
-    this.setState({
-      newRecipe: this.state.newRecipe
-    });
-  }
-
   componentWillMount() {
     this.setState({
       recipes: JSON.parse(localStorage.getItem('recipes')) || [{name: 'test', ingridients: 'test, test'}]
@@ -76,13 +55,7 @@ class Main extends React.Component {
     return (
       <div>
         <List remove={this.removeRecipe.bind(this)} recipes={this.state.recipes} />
-        <div>
-          <label>Name</label>
-          <input type="text" value={this.state.newRecipe.name} onChange={this.handleChangeName.bind(this)} />
-          <label>Ingridients</label>
-          <input type="text" value={this.state.newRecipe.ingridients} onChange={this.handleChangeIngridients.bind(this)} />
-          <button onClick={this.addRecipe.bind(this)}>Testing</button>
-        </div>
+        <Add />
       </div>
     )
   }
