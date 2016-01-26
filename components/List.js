@@ -11,7 +11,10 @@ class List extends React.Component {
     var reciepes = [];
 
     this.props.recipes.forEach(function (recipe, k) {
-      reciepes.push(<Reciepe remove={this.props.remove.bind(this, k)} recipe={recipe} key={k} />);
+      reciepes.push(<Reciepe
+        remove={this.props.remove.bind(this, k)}
+        edit={this.props.edit.bind(this, k)}
+        recipe={recipe} key={k} />);
     }.bind(this));
 
     return (

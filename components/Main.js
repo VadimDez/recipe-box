@@ -4,7 +4,7 @@
 
 import React from 'react';
 import List from './List';
-import Add from './Add';
+import Modal from './Modal';
 
 class Main extends React.Component {
   constructor() {
@@ -15,7 +15,9 @@ class Main extends React.Component {
       newRecipe: {
         name: '',
         ingridients: ''
-      }
+      },
+      edited: null,
+      inEdit: {}
     };
   }
 
@@ -37,11 +39,22 @@ class Main extends React.Component {
     };
   }
 
+  /**
+   * Remove recipe
+   * @param key
+   */
   removeRecipe(key) {
     this.state.recipes.splice(key, 1);
 
     this.setState({
       recipes: this.state.recipes
+    });
+  }
+
+  editRecipe(key) {
+    this.setState({
+      edited: key,
+      inEdit: this.state.recipes[key]
     });
   }
 
@@ -73,14 +86,41 @@ class Main extends React.Component {
     });
   }
 
+  /**
+   * On name change
+   * @param name
+   */
+  handleChangeNameEdit(name) {
+    this.state.inEdit.name = name;
+    this.setState({
+      inEdit: this.state.inEdit
+    });
+  }
+
+  /**
+   * On ingridients change
+   * @param ingridients
+   */
+  handleChangeIngridientsEdit(ingridients) {
+    this.state.inEdit.ingridients = ingridients;
+    this.setState({
+      inEdit: this.state.inEdit
+    });
+  }
+
   render() {
     return (
       <div>
-        <List remove={this.removeRecipe.bind(this)} recipes={this.state.recipes} />
-        <Add recipe={this.state.newRecipe}
+        <List remove={this.removeRecipe.bind(this)} edit={this.editRecipe.bind(this)} recipes={this.state.recipes} />
+        <Modal recipe={this.state.newRecipe}
              updateName={this.handleChangeName.bind(this)}
              updateIngridients={this.handleChangeIngridients.bind(this)}
-             addRecipe={this.addRecipe.bind(this)} />
+             save={this.addRecipe.bind(this)} />
+
+        <Modal recipe={this.state.inEdit}
+             updateName={this.handleChangeNameEdit.bind(this)}
+             updateIngridients={this.handleChangeIngridientsEdit.bind(this)}
+             save={this.addRecipe.bind(this)} />
       </div>
     )
   }

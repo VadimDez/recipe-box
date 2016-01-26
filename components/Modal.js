@@ -4,12 +4,7 @@
 
 import React from 'react';
 
-class Add extends React.Component {
-  constructor() {
-    super();
-  }
-
-
+class Modal extends React.Component {
   /**
    * On name change
    * @param e
@@ -33,10 +28,10 @@ class Add extends React.Component {
         <input type="text" value={this.props.recipe.name} onChange={this.handleChangeName.bind(this)} />
         <label>Ingridients</label>
         <input type="text" value={this.props.recipe.ingridients} onChange={this.handleChangeIngridients.bind(this)} />
-        <button onClick={this.props.addRecipe}>Add</button>
+        <button onClick={this.props.save}>Add</button>
       </div>
     )
   }
 }
 
-export default Add;
+export default Modal;
