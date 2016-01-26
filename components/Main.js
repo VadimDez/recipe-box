@@ -51,11 +51,36 @@ class Main extends React.Component {
     });
   }
 
+  /**
+   * On name change
+   * @param name
+   */
+  handleChangeName(name) {
+    this.state.newRecipe.name = name;
+    this.setState({
+      newRecipe: this.state.newRecipe
+    });
+  }
+
+  /**
+   * On ingridients change
+   * @param ingridients
+   */
+  handleChangeIngridients(ingridients) {
+    this.state.newRecipe.ingridients = ingridients;
+    this.setState({
+      newRecipe: this.state.newRecipe
+    });
+  }
+
   render() {
     return (
       <div>
         <List remove={this.removeRecipe.bind(this)} recipes={this.state.recipes} />
-        <Add />
+        <Add recipe={this.state.newRecipe}
+             updateName={this.handleChangeName.bind(this)}
+             updateIngridients={this.handleChangeIngridients.bind(this)}
+             addRecipe={this.addRecipe.bind(this)} />
       </div>
     )
   }

@@ -7,17 +7,6 @@ import React from 'react';
 class Add extends React.Component {
   constructor() {
     super();
-
-    this.state = {
-      recipe: {
-        name: '',
-        ingridients: ''
-      }
-    };
-  }
-
-  addRecipe() {
-
   }
 
 
@@ -26,10 +15,7 @@ class Add extends React.Component {
    * @param e
    */
   handleChangeName(e) {
-    this.state.recipe.name = e.target.value;
-    this.setState({
-      recipe: this.state.recipe
-    });
+    this.props.updateName(e.target.value);
   }
 
   /**
@@ -37,20 +23,17 @@ class Add extends React.Component {
    * @param e
    */
   handleChangeIngridients(e) {
-    this.state.recipe.ingridients = e.target.value;
-    this.setState({
-      newRecipe: this.state.recipe
-    });
+    this.props.updateIngridients(e.target.value);
   }
 
   render() {
     return (
       <div>
         <label>Name</label>
-        <input type="text" value={this.state.recipe.name} onChange={this.handleChangeName.bind(this)} />
+        <input type="text" value={this.props.recipe.name} onChange={this.handleChangeName.bind(this)} />
         <label>Ingridients</label>
-        <input type="text" value={this.state.recipe.ingridients} onChange={this.handleChangeIngridients.bind(this)} />
-        <button onClick={this.addRecipe.bind(this)}>Add</button>
+        <input type="text" value={this.props.recipe.ingridients} onChange={this.handleChangeIngridients.bind(this)} />
+        <button onClick={this.props.addRecipe}>Add</button>
       </div>
     )
   }
