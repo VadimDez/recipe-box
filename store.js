@@ -3,11 +3,16 @@
  */
 
 import {createStore} from 'redux';
+import {combineReducers} from 'redux';
 
 const recips = (state = [], action) => {
   return state;
 };
 
-const store = createStore(recips);
+const app = combineReducers({
+  recips
+});
+
+const store = createStore(app);
 
 export default store;

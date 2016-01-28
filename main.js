@@ -4,5 +4,11 @@
 import Main from './components/Main';
 import React from 'react';
 import {render} from 'react-dom';
+import store from './store';
 
-render(<Main />, document.getElementById('app'));
+const renderer = () => {
+  render(<Main store={store} />, document.getElementById('app'));
+};
+
+store.subscribe(renderer);
+renderer();

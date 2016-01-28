@@ -5,7 +5,6 @@
 import React from 'react';
 import List from './List';
 import Modal from './Modal';
-import store from './../store';
 
 class Main extends React.Component {
   constructor() {
