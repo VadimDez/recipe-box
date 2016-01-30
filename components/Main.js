@@ -25,15 +25,10 @@ class Main extends React.Component {
    * Add new recipe
    */
   addRecipe(name, ingridients) {
-    this.state.recipes.push({
+    this.store.dispatch({
+      type: 'ADD_RECIPE',
       name,
       ingridients
-    });
-
-    localStorage.setItem('recipes', JSON.stringify(this.state.recipes));
-
-    this.setState({
-      recipes: this.state.recipes
     });
   }
 
@@ -65,7 +60,8 @@ class Main extends React.Component {
         <List
           remove={this.removeRecipe.bind(this)}
           edit={this.editRecipe.bind(this)}
-          recipes={this.store.getState().recipes} />
+          recipes={this.store.getState().recipes}
+        />
 
         <Modal
            save={this.addRecipe.bind(this)}

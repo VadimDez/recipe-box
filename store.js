@@ -18,6 +18,17 @@ const recipes = (state = recipesFromLocalStorage, action) => {
     return newState;
   }
 
+  if (action.type === 'ADD_RECIPE') {
+    let newState = state.concat({
+      name: action.name,
+      ingridients: action.ingridients
+    });
+
+    localStorage.setItem('recipes', JSON.stringify(newState));
+
+    return newState;
+  }
+
   return state;
 };
 
