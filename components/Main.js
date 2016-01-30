@@ -42,10 +42,9 @@ class Main extends React.Component {
    * @param key
    */
   removeRecipe(key) {
-    this.state.recipes.splice(key, 1);
-
-    this.setState({
-      recipes: this.state.recipes
+    this.store.dispatch({
+      type: 'DELETE_RECIPE',
+      key: key
     });
   }
 
@@ -57,9 +56,7 @@ class Main extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({
-      recipes: JSON.parse(localStorage.getItem('recipes')) || [{name: 'test', ingridients: 'test, test'}]
-    });
+    this.store = this.props.store;
   }
 
   render() {
@@ -68,7 +65,7 @@ class Main extends React.Component {
         <List
           remove={this.removeRecipe.bind(this)}
           edit={this.editRecipe.bind(this)}
-          recipes={this.state.recipes} />
+          recipes={this.store.getState().recipes} />
 
         <Modal
            save={this.addRecipe.bind(this)}

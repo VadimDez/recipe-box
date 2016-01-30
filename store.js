@@ -5,12 +5,24 @@
 import {createStore} from 'redux';
 import {combineReducers} from 'redux';
 
-const recips = (state = [], action) => {
+const recipesFromLocalStorage = JSON.parse(localStorage.getItem('recipes')) || [];
+
+const recipes = (state = recipesFromLocalStorage, action) => {
+  if (action.type === 'DELETE_RECIPE') {
+     let newState = state
+      .slice(0, action.key)
+      .concat(state.slice(action.key + 1));
+
+    localStorage.setItem('recipes', JSON.stringify(newState));
+
+    return newState;
+  }
+
   return state;
 };
 
 const app = combineReducers({
-  recips
+  recipes
 });
 
 const store = createStore(app);
