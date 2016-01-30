@@ -5,30 +5,26 @@
 import React from 'react';
 
 class Modal extends React.Component {
-  /**
-   * On name change
-   * @param e
-   */
-  handleChangeName(e) {
-    this.props.updateName(e.target.value);
-  }
-
-  /**
-   * On ingridients change
-   * @param e
-   */
-  handleChangeIngridients(e) {
-    this.props.updateIngridients(e.target.value);
-  }
-
   render() {
     return (
       <div>
         <label>Name</label>
-        <input type="text" value={this.props.recipe.name} onChange={this.handleChangeName.bind(this)} />
+        <input type="text"
+               ref={node => {
+                this.nameNode = node;
+               }}/>
         <label>Ingridients</label>
-        <input type="text" value={this.props.recipe.ingridients} onChange={this.handleChangeIngridients.bind(this)} />
-        <button onClick={this.props.save}>Add</button>
+        <input type="text"
+               ref={node => {
+                this.ingridientsNode = node;
+               }} />
+        <button onClick={() => {
+          this.props.save(this.nameNode.value, this.ingridientsNode.value);
+          this.nameNode.value = '';
+          this.ingridientsNode.value = '';
+        }}>
+          Add
+        </button>
       </div>
     )
   }

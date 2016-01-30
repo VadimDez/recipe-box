@@ -24,19 +24,17 @@ class Main extends React.Component {
   /**
    * Add new recipe
    */
-  addRecipe() {
-    this.state.recipes.push(this.state.newRecipe);
+  addRecipe(name, ingridients) {
+    this.state.recipes.push({
+      name,
+      ingridients
+    });
 
     localStorage.setItem('recipes', JSON.stringify(this.state.recipes));
 
     this.setState({
       recipes: this.state.recipes
     });
-
-    this.state.newRecipe = {
-      name: '',
-      ingridients: ''
-    };
   }
 
   /**
@@ -68,28 +66,6 @@ class Main extends React.Component {
    * On name change
    * @param name
    */
-  handleChangeName(name) {
-    this.state.newRecipe.name = name;
-    this.setState({
-      newRecipe: this.state.newRecipe
-    });
-  }
-
-  /**
-   * On ingridients change
-   * @param ingridients
-   */
-  handleChangeIngridients(ingridients) {
-    this.state.newRecipe.ingridients = ingridients;
-    this.setState({
-      newRecipe: this.state.newRecipe
-    });
-  }
-
-  /**
-   * On name change
-   * @param name
-   */
   handleChangeNameEdit(name) {
     this.state.inEdit.name = name;
     this.setState({
@@ -112,9 +88,7 @@ class Main extends React.Component {
     return (
       <div>
         <List remove={this.removeRecipe.bind(this)} edit={this.editRecipe.bind(this)} recipes={this.state.recipes} />
-        <Modal recipe={this.state.newRecipe}
-             updateName={this.handleChangeName.bind(this)}
-             updateIngridients={this.handleChangeIngridients.bind(this)}
+        <Modal
              save={this.addRecipe.bind(this)} />
 
         <Modal recipe={this.state.inEdit}
