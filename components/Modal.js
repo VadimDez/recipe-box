@@ -23,7 +23,7 @@ class Modal extends React.Component {
           this.nameNode.value = '';
           this.ingridientsNode.value = '';
         }}>
-          Add
+          {this.props.text}
         </button>
       </div>
     )

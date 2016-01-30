@@ -62,39 +62,24 @@ class Main extends React.Component {
     });
   }
 
-  /**
-   * On name change
-   * @param name
-   */
-  handleChangeNameEdit(name) {
-    this.state.inEdit.name = name;
-    this.setState({
-      inEdit: this.state.inEdit
-    });
-  }
-
-  /**
-   * On ingridients change
-   * @param ingridients
-   */
-  handleChangeIngridientsEdit(ingridients) {
-    this.state.inEdit.ingridients = ingridients;
-    this.setState({
-      inEdit: this.state.inEdit
-    });
-  }
-
   render() {
     return (
       <div>
-        <List remove={this.removeRecipe.bind(this)} edit={this.editRecipe.bind(this)} recipes={this.state.recipes} />
-        <Modal
-             save={this.addRecipe.bind(this)} />
+        <List
+          remove={this.removeRecipe.bind(this)}
+          edit={this.editRecipe.bind(this)}
+          recipes={this.state.recipes} />
 
-        <Modal recipe={this.state.inEdit}
-             updateName={this.handleChangeNameEdit.bind(this)}
-             updateIngridients={this.handleChangeIngridientsEdit.bind(this)}
-             save={this.addRecipe.bind(this)} />
+        <Modal
+           save={this.addRecipe.bind(this)}
+           text={'Add'}
+        />
+
+        <Modal
+          recipe={this.state.inEdit}
+          save={this.addRecipe.bind(this)}
+          text={'Edit'}
+        />
       </div>
     )
   }
