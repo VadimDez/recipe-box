@@ -8,28 +8,22 @@ import {combineReducers} from 'redux';
 const recipesFromLocalStorage = JSON.parse(localStorage.getItem('recipes')) || [];
 
 const recipes = (state = recipesFromLocalStorage, action) => {
+  let newState;
   if (action.type === 'DELETE_RECIPE') {
-     let newState = state
+     newState = state
       .slice(0, action.key)
       .concat(state.slice(action.key + 1));
-
-    localStorage.setItem('recipes', JSON.stringify(newState));
-
-    return newState;
-  }
-
-  if (action.type === 'ADD_RECIPE') {
-    let newState = state.concat({
+  } else if (action.type === 'ADD_RECIPE') {
+    newState = state.concat({
       name: action.name,
       ingridients: action.ingridients
     });
 
-    localStorage.setItem('recipes', JSON.stringify(newState));
-
-    return newState;
   }
 
-  return state;
+  localStorage.setItem('recipes', JSON.stringify(newState));
+
+  return newState || state;
 };
 
 const app = combineReducers({
