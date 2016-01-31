@@ -5,7 +5,14 @@
 import {createStore} from 'redux';
 import {combineReducers} from 'redux';
 
-const recipesFromLocalStorage = JSON.parse(localStorage.getItem('recipes')) || [];
+
+var recipesFromLocalStorage = localStorage.getItem('recipes');
+
+if (!recipesFromLocalStorage || recipesFromLocalStorage === 'undefined') {
+  recipesFromLocalStorage = [];
+} else {
+  recipesFromLocalStorage = JSON.parse(recipesFromLocalStorage);
+}
 
 const recipes = (state = recipesFromLocalStorage, action) => {
   let newState;

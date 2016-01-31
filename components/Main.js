@@ -50,11 +50,8 @@ class Main extends React.Component {
     });
   }
 
-  componentWillMount() {
-    this.store = this.props.store;
-  }
-
   render() {
+    this.store = this.context.store;
     return (
       <div>
         <List
@@ -77,5 +74,9 @@ class Main extends React.Component {
     )
   }
 }
+
+Main.contextTypes = {
+  store: React.PropTypes.object
+};
 
 export default Main;

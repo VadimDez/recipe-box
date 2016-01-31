@@ -6,8 +6,28 @@ import React from 'react';
 import {render} from 'react-dom';
 import store from './store';
 
+class Provider extends React.Component {
+  getChildContext() {
+    return {
+      store: this.props.store
+    }
+  }
+
+  render() {
+    return this.props.children;
+  }
+}
+
+Provider.childContextTypes = {
+  store: React.PropTypes.object
+};
+
 const renderer = () => {
-  render(<Main store={store} />, document.getElementById('app'));
+  render(
+    <Provider store={store}>
+      <Main />
+    </Provider>
+    , document.getElementById('app'));
 };
 
 store.subscribe(renderer);
