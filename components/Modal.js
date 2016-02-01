@@ -7,8 +7,6 @@ import React from 'react';
 class Modal extends React.Component {
 
   render() {
-console.log('render');
-
     let recipe = this.props.recipe || {name: '', ingridients: ''};
 
     return (
@@ -31,7 +29,7 @@ console.log('render');
         />
         <button
           onClick={() => {
-            save(this.nameNode.value, this.ingridientsNode.value);
+            this.props.save(this.nameNode.value, this.ingridientsNode.value);
             this.nameNode.value = '';
             this.ingridientsNode.value = '';
         }}>

@@ -5,38 +5,22 @@
 import React from 'react';
 import Reciepe from './Reciepe';
 
-class List extends React.Component {
-
-  componentDidMount() {
-    const store = this.context.store;
-
-    this.unsubscribe = store.subscribe(() => {
-      this.forceUpdate();
-    });
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  render() {
-    const store = this.context.store;
-    var reciepes = [];
-
-    store.getState().recipes.forEach(function (recipe, k) {
-      reciepes.push(<Reciepe
-        remove={this.props.remove.bind(this, k)}
-        edit={this.props.edit.bind(this, k)}
-        recipe={recipe} key={k} />);
-    }.bind(this));
-
+const List = ({remove, edit}, { store }) => {
+  let recipes = store.getState().recipes.map((recipe, k) => {
     return (
-      <div>
-        { reciepes }
-      </div>
-    )
-  }
-}
+      <Reciepe
+      remove={remove.bind(this, k)}
+      edit={edit.bind(this, k)}
+      recipe={recipe} key={k} />
+    );
+  });
+
+  return (
+    <div>
+      { recipes }
+    </div>
+  )
+};
 
 List.contextTypes = {
   store: React.PropTypes.object
