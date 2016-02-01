@@ -20,15 +20,16 @@ const recipes = (state = recipesFromLocalStorage, action) => {
      newState = state
       .slice(0, action.key)
       .concat(state.slice(action.key + 1));
+
+    localStorage.setItem('recipes', JSON.stringify(newState));
   } else if (action.type === 'ADD_RECIPE') {
     newState = state.concat({
       name: action.name,
       ingridients: action.ingridients
     });
 
+    localStorage.setItem('recipes', JSON.stringify(newState));
   }
-
-  localStorage.setItem('recipes', JSON.stringify(newState));
 
   return newState || state;
 };

@@ -4,30 +4,33 @@
 
 import React from 'react';
 
-class Modal extends React.Component {
-  render() {
-    return (
-      <div>
-        <label>Name</label>
-        <input type="text"
-               ref={node => {
-                this.nameNode = node;
-               }}/>
-        <label>Ingridients</label>
-        <input type="text"
-               ref={node => {
-                this.ingridientsNode = node;
-               }} />
-        <button onClick={() => {
-          this.props.save(this.nameNode.value, this.ingridientsNode.value);
-          this.nameNode.value = '';
-          this.ingridientsNode.value = '';
-        }}>
-          {this.props.text}
-        </button>
-      </div>
-    )
-  }
-}
+let Modal = ({save, text}) => {
+  let nameNode;
+  let ingridientsNode;
+
+  return (
+    <div>
+      <label>Name</label>
+      <input
+        type="text"
+        ref={node => {
+          nameNode = node;
+        }}/>
+      <label>Ingridients</label>
+      <input
+        type="text"
+        ref={node => {
+          ingridientsNode = node;
+        }} />
+      <button onClick={() => {
+        save(nameNode.value, ingridientsNode.value);
+        nameNode.value = '';
+        ingridientsNode.value = '';
+      }}>
+        { text }
+      </button>
+    </div>
+  )
+};
 
 export default Modal;
