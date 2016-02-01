@@ -57,7 +57,6 @@ class Main extends React.Component {
         <List
           remove={this.removeRecipe.bind(this)}
           edit={this.editRecipe.bind(this)}
-          recipes={this.store.getState().recipes}
         />
 
         <Modal

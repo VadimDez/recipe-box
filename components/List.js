@@ -7,10 +7,23 @@ import Reciepe from './Reciepe';
 
 class List extends React.Component {
 
+  componentDidMount() {
+    const store = this.context.store;
+
+    this.unsubscribe = store.subscribe(() => {
+      this.forceUpdate();
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
   render() {
+    const store = this.context.store;
     var reciepes = [];
 
-    this.props.recipes.forEach(function (recipe, k) {
+    store.getState().recipes.forEach(function (recipe, k) {
       reciepes.push(<Reciepe
         remove={this.props.remove.bind(this, k)}
         edit={this.props.edit.bind(this, k)}
@@ -19,10 +32,14 @@ class List extends React.Component {
 
     return (
       <div>
-        {reciepes}
+        { reciepes }
       </div>
     )
   }
 }
+
+List.contextTypes = {
+  store: React.PropTypes.object
+};
 
 export default List;

@@ -15,5 +15,4 @@ const renderer = () => {
     document.getElementById('app'));
 };
 
-store.subscribe(renderer);
 renderer();
