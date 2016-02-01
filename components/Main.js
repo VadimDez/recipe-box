@@ -7,18 +7,17 @@ import List from './List';
 import Modal from './Modal';
 
 class Main extends React.Component {
-  constructor() {
-    super();
 
-    this.state = {
-      recipes: [],
-      newRecipe: {
-        name: '',
-        ingridients: ''
-      },
-      edited: null,
-      inEdit: {}
-    };
+  componentDidMount() {
+    const store = this.context.store;
+
+    this.unsubscribe = store.subscribe(() => {
+      this.forceUpdate();
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   /**
@@ -44,30 +43,61 @@ class Main extends React.Component {
   }
 
   editRecipe(key) {
-    this.setState({
-      edited: key,
-      inEdit: this.state.recipes[key]
-    });
+    this.editModal(true, key);
+  }
+
+  addModal(value) {
+    this.store.dispatch({
+      type: 'ADD_MODAL_ACTION',
+      isOpen: value
+    })
+  }
+
+  openAddModal() {
+    this.addModal(true);
+  }
+
+  closeAddModal() {
+    this.addModal(false);
+  }
+
+  editModal(value, key) {
+    this.store.dispatch({
+      type: 'EDIT_MODAL_ACTION',
+      isOpen: value,
+      editKey: key
+    })
+  }
+
+  closeEditModal() {
+    this.editModal(false);
   }
 
   render() {
     this.store = this.context.store;
+    const state = this.store.getState();
+
     return (
       <div>
         <List
           remove={this.removeRecipe.bind(this)}
           edit={this.editRecipe.bind(this)}
         />
+        <button onClick={this.openAddModal.bind(this)}>Add</button>
 
         <Modal
-           save={this.addRecipe.bind(this)}
-           text={'Add'}
+          active={state.modals.addModal}
+          save={this.addRecipe.bind(this)}
+          text={'Add'}
+          cancel={this.closeAddModal.bind(this)}
         />
 
         <Modal
-          recipe={this.state.inEdit}
+          active={state.modals.editModal}
+          recipe={state.recipes[state.modals.editKey]}
           save={this.addRecipe.bind(this)}
           text={'Edit'}
+          cancel={this.closeEditModal.bind(this)}
         />
       </div>
     )

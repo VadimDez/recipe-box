@@ -4,33 +4,43 @@
 
 import React from 'react';
 
-let Modal = ({save, text}) => {
-  let nameNode;
-  let ingridientsNode;
+class Modal extends React.Component {
 
-  return (
-    <div>
-      <label>Name</label>
-      <input
-        type="text"
-        ref={node => {
-          nameNode = node;
-        }}/>
-      <label>Ingridients</label>
-      <input
-        type="text"
-        ref={node => {
-          ingridientsNode = node;
-        }} />
-      <button onClick={() => {
-        save(nameNode.value, ingridientsNode.value);
-        nameNode.value = '';
-        ingridientsNode.value = '';
-      }}>
-        { text }
-      </button>
-    </div>
-  )
-};
+  render() {
+console.log('render');
+
+    let recipe = this.props.recipe || {name: '', ingridients: ''};
+
+    return (
+      <div className={(this.props.active) ? '' : 'hidden'}>
+        <label>Name</label>
+        <input
+          type="text"
+          ref={node => {
+            this.nameNode = node;
+          }}
+          defaultValue={recipe.name}
+        />
+        <label>Ingridients</label>
+        <input
+          type="text"
+          ref={node => {
+            this.ingridientsNode = node;
+          }}
+          defaultValue={recipe.ingridients}
+        />
+        <button
+          onClick={() => {
+            save(this.nameNode.value, this.ingridientsNode.value);
+            this.nameNode.value = '';
+            this.ingridientsNode.value = '';
+        }}>
+          { this.props.text }
+        </button>
+        <button onClick={this.props.cancel}>Cancel</button>
+      </div>
+    )
+  }
+}
 
 export default Modal;

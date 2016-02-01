@@ -6,6 +6,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import store from './store';
 import { Provider } from 'react-redux';
+import './styles/main.scss';
 
 const renderer = () => {
   render(

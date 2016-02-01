@@ -34,8 +34,30 @@ const recipes = (state = recipesFromLocalStorage, action) => {
   return newState || state;
 };
 
+const modals = (state = {addModal: false, editModal: false, editKey: null}, action) => {
+
+  if (action.type === 'ADD_MODAL_ACTION') {
+    // hide/show add modal, dismiss edit modal
+    return Object.assign({}, state, {
+      addModal: action.isOpen,
+      editModal: false,
+      editKey: null
+    });
+  } else if (action.type === 'EDIT_MODAL_ACTION') {
+    // show/hide edit modal, and hide addModal
+    return Object.assign({}, state, {
+      editModal: action.isOpen,
+      editKey: action.editKey,
+      addModal: false
+    });
+  }
+
+  return state;
+};
+
 const app = combineReducers({
-  recipes
+  recipes,
+  modals
 });
 
 const store = createStore(app);
