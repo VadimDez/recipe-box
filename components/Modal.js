@@ -17,7 +17,7 @@ class Modal extends React.Component {
           ref={node => {
             this.nameNode = node;
           }}
-          defaultValue={recipe.name}
+          value={recipe.name}
         />
         <label>Ingridients</label>
         <input
@@ -25,7 +25,7 @@ class Modal extends React.Component {
           ref={node => {
             this.ingridientsNode = node;
           }}
-          defaultValue={recipe.ingridients}
+          value={recipe.ingridients}
         />
         <button
           onClick={() => {
