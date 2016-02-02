@@ -6,32 +6,57 @@ import React from 'react';
 
 class Modal extends React.Component {
 
+  constructor() {
+    super();
+
+    this.state = {
+      recipe: {name: '', ingridients: ''}
+    };
+  }
+
+  componentWillMount() {
+    //this.isNew = !this.props.recipe;
+    this.setState({
+      recipe: this.props.recipe || {name: '', ingridients: ''}
+    });
+  }
+
+  updateValue(field) {
+    return (e) => {
+      this.state.recipe[field] = e.target.value;
+      this.setState({
+        recipe: this.state.recipe
+      });
+    }
+  }
+
   render() {
-    let recipe = this.props.recipe || {name: '', ingridients: ''};
 
     return (
+
       <div className={(this.props.active) ? '' : 'hidden'}>
         <label>Name</label>
         <input
           type="text"
-          ref={node => {
-            this.nameNode = node;
-          }}
-          value={recipe.name}
+          onChange={this.updateValue('name')}
+          value={this.state.recipe.name}
         />
         <label>Ingridients</label>
         <input
           type="text"
-          ref={node => {
-            this.ingridientsNode = node;
-          }}
-          value={recipe.ingridients}
+          onChange={this.updateValue('ingridients')}
+          value={this.state.recipe.ingridients}
         />
         <button
           onClick={() => {
-            this.props.save(this.nameNode.value, this.ingridientsNode.value);
-            this.nameNode.value = '';
-            this.ingridientsNode.value = '';
+          this.props.save(this.state.recipe.name, this.state.recipe.ingridients);
+
+          if (this.isNew) {
+
+            this.setState({
+              recipe: {name: '', ingridients: ''}
+            });
+          }
         }}>
           { this.props.text }
         </button>
