@@ -15,7 +15,7 @@ class Modal extends React.Component {
   }
 
   componentWillMount() {
-    this.isNew = !this.props.recipe;
+    //this.isNew = !this.props.recipe;
     this.setState({
       recipe: this.props.recipe || {name: '', ingridients: ''}
     });
