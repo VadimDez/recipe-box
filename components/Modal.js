@@ -9,7 +9,7 @@ class Modal extends React.Component {
   constructor() {
     super()
 
-    this.recipe = {name: '', ingridients: ''}
+    this.recipe = {name: '', ingredients: ''}
   }
 
   updateValue(field) {
@@ -20,7 +20,7 @@ class Modal extends React.Component {
   }
 
   render() {
-    this.recipe = this.props.recipe || {name: '', ingridients: ''}
+    this.recipe = this.props.recipe || {name: '', ingredients: ''}
 
     return (
 
@@ -31,18 +31,18 @@ class Modal extends React.Component {
           onChange={this.updateValue('name')}
           value={this.recipe.name}
         />
-        <label>Ingridients</label>
+        <label>Ingredients</label>
         <input
           type="text"
-          onChange={this.updateValue('ingridients')}
-          value={this.recipe.ingridients}
+          onChange={this.updateValue('ingredients')}
+          value={this.recipe.ingredients}
         />
         <button
           onClick={() => {
-          this.props.save(this.recipe.name, this.recipe.ingridients);
+          this.props.save(this.recipe.name, this.recipe.ingredients);
 
           if (this.isNew) {
-            this.recipe = {name: '', ingridients: ''}
+            this.recipe = {name: '', ingredients: ''}
           }
         }}>
           { this.props.text }

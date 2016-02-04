@@ -5,18 +5,18 @@ import React from 'react';
 
 class Reciepe extends React.Component {
   render() {
-    var ingridients = this.props.recipe.ingridients.split(',') || [];
+    var ingredients = this.props.recipe.ingredients.split(',') || [];
 
-    ingridients = ingridients.map(function (name, k) {
+    ingredients = ingredients.map(function (name, k) {
       return <div key={k}>{name}</div>
     });
 
     return (
       <div>
         <div>Name: {this.props.recipe.name}</div>
-        <div>Ingridients</div>
+        <div>Ingredients</div>
         <div>
-          {ingridients}
+          { ingredients }
         </div>
         <button onClick={this.props.remove}>Delete</button>
         <button onClick={this.props.edit}>Edit</button>

@@ -23,11 +23,11 @@ class Main extends React.Component {
   /**
    * Add new recipe
    */
-  addRecipe(name, ingridients) {
+  addRecipe(recipe) {
     this.store.dispatch({
       type: 'ADD_RECIPE',
-      name,
-      ingridients
+      name: recipe.name,
+      ingredients: recipe.ingredients
     });
   }
 
