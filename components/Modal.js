@@ -14,14 +14,18 @@ class Modal extends React.Component {
 
   updateValue(field) {
     return (e) => {
-      this.recipe[field] = e.target.value
-      this.forceUpdate()
+      this.recipe[field] = e.target.value;
+      this.forceUpdate();
     }
   }
 
-  render() {
-    this.recipe = this.props.recipe || {name: '', ingredients: ''}
+  componentWillReceiveProps() {
+    const state = this.context.store.getState();
+    this.recipe = state.recipes[state.modals.editKey] || {name: '', ingredients: ''};
+    this.isNew = !isNaN(state.modals.editKey);
+  }
 
+  render() {
     return (
 
       <div className={(this.props.active) ? '' : 'hidden'}>
@@ -39,7 +43,7 @@ class Modal extends React.Component {
         />
         <button
           onClick={() => {
-          this.props.save(this.recipe.name, this.recipe.ingredients);
+          this.props.save(this.recipe);
 
           if (this.isNew) {
             this.recipe = {name: '', ingredients: ''}
@@ -52,5 +56,10 @@ class Modal extends React.Component {
     )
   }
 }
+
+
+Modal.contextTypes = {
+  store: React.PropTypes.object
+};
 
 export default Modal;
