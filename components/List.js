@@ -6,18 +6,18 @@ import React from 'react';
 import Reciepe from './Reciepe';
 
 const List = ({remove, edit}, { store }) => {
-  let recipes = store.getState().recipes.map((recipe, k) => {
-    return (
-      <Reciepe
-      remove={remove.bind(this, k)}
-      edit={edit.bind(this, k)}
-      recipe={recipe} key={k} />
-    );
-  });
-
   return (
     <div>
-      { recipes }
+      {
+        store.getState().recipes.map((recipe, k) => {
+          return (
+            <Reciepe
+              remove={remove.bind(this, k)}
+              edit={edit.bind(this, k)}
+              recipe={recipe} key={k} />
+          );
+        })
+      }
     </div>
   )
 };
