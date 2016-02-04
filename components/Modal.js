@@ -7,30 +7,20 @@ import React from 'react';
 class Modal extends React.Component {
 
   constructor() {
-    super();
+    super()
 
-    this.state = {
-      recipe: {name: '', ingridients: ''}
-    };
-  }
-
-  componentWillMount() {
-    this.isNew = !this.props.recipe;
-    this.setState({
-      recipe: this.props.recipe || {name: '', ingridients: ''}
-    });
+    this.recipe = {name: '', ingridients: ''}
   }
 
   updateValue(field) {
     return (e) => {
-      this.state.recipe[field] = e.target.value;
-      this.setState({
-        recipe: this.state.recipe
-      });
+      this.recipe[field] = e.target.value
+      this.forceUpdate()
     }
   }
 
   render() {
+    this.recipe = this.props.recipe || {name: '', ingridients: ''}
 
     return (
 
@@ -39,23 +29,20 @@ class Modal extends React.Component {
         <input
           type="text"
           onChange={this.updateValue('name')}
-          value={this.state.recipe.name}
+          value={this.recipe.name}
         />
         <label>Ingridients</label>
         <input
           type="text"
           onChange={this.updateValue('ingridients')}
-          value={this.state.recipe.ingridients}
+          value={this.recipe.ingridients}
         />
         <button
           onClick={() => {
-          this.props.save(this.state.recipe.name, this.state.recipe.ingridients);
+          this.props.save(this.recipe.name, this.recipe.ingridients);
 
           if (this.isNew) {
-
-            this.setState({
-              recipe: {name: '', ingridients: ''}
-            });
+            this.recipe = {name: '', ingridients: ''}
           }
         }}>
           { this.props.text }

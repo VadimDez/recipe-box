@@ -9,15 +9,15 @@ import Modal from './Modal';
 class Main extends React.Component {
 
   componentDidMount() {
-    const store = this.context.store;
+    const store = this.context.store
 
     this.unsubscribe = store.subscribe(() => {
-      this.forceUpdate();
-    });
+      this.forceUpdate()
+    })
   }
 
   componentWillUnmount() {
-    this.unsubscribe();
+    this.unsubscribe()
   }
 
   /**
