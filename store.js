@@ -16,6 +16,7 @@ if (!recipesFromLocalStorage || recipesFromLocalStorage === 'undefined') {
 
 const recipes = (state = recipesFromLocalStorage, action) => {
   let newState;
+
   if (action.type === 'DELETE_RECIPE') {
      newState = state
       .slice(0, action.key)
@@ -29,7 +30,7 @@ const recipes = (state = recipesFromLocalStorage, action) => {
     });
 
     localStorage.setItem('recipes', JSON.stringify(newState));
-  } else if (action.tyoe === 'EDIT_RECIPE') {
+  } else if (action.type === 'EDIT_RECIPE') {
     newState = state
       .slice(0, action.editKey)
       .concat({

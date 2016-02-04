@@ -29,15 +29,21 @@ class Main extends React.Component {
       name: recipe.name,
       ingredients: recipe.ingredients
     });
+    this.closeAddModal()
   }
 
+  /**
+   * Modify existing recipe
+   * @param recipe
+   */
   modifyRecipe(recipe) {
     this.store.dispatch({
       type: 'EDIT_RECIPE',
       name: recipe.name,
       ingredients: recipe.ingredients,
-      editKey: this.store.editKey
+      editKey: this.store.getState().modals.editKey
     });
+    this.closeEditModal();
   }
 
   /**
