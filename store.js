@@ -29,6 +29,15 @@ const recipes = (state = recipesFromLocalStorage, action) => {
     });
 
     localStorage.setItem('recipes', JSON.stringify(newState));
+  } else if (action.tyoe === 'EDIT_RECIPE') {
+    newState = state
+      .slice(0, action.editKey)
+      .concat({
+        name: action.name,
+        ingredients: action.ingredients
+      })
+      .concat(state.slice(action.editKey + 1));
+    localStorage.setItem('recipes', JSON.stringify(newState));
   }
 
   return newState || state;

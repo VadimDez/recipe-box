@@ -31,6 +31,15 @@ class Main extends React.Component {
     });
   }
 
+  modifyRecipe(recipe) {
+    this.store.dispatch({
+      type: 'EDIT_RECIPE',
+      name: recipe.name,
+      ingredients: recipe.ingredients,
+      editKey: this.store.editKey
+    });
+  }
+
   /**
    * Remove recipe
    * @param key
@@ -95,7 +104,7 @@ class Main extends React.Component {
         <Modal
           active={state.modals.editModal}
           recipe={state.recipes[state.modals.editKey]}
-          save={this.addRecipe.bind(this)}
+          save={this.modifyRecipe.bind(this)}
           text={'Edit'}
           cancel={this.closeEditModal.bind(this)}
         />
