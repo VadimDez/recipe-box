@@ -93,12 +93,17 @@ class Main extends React.Component {
     const state = this.store.getState();
 
     return (
-      <div>
+      <div id="main">
+        <div>
+          <h1>Recipe box</h1>
+        </div>
+        <div className="add" onClick={this.openAddModal.bind(this)}>
+          + Add
+        </div>
         <List
           remove={this.removeRecipe.bind(this)}
           edit={this.editRecipe.bind(this)}
         />
-        <button onClick={this.openAddModal.bind(this)}>Add</button>
 
         <Modal
           active={state.modals.addModal}

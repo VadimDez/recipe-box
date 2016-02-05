@@ -1,3 +1,34 @@
+// colors
+$bg: #fff;
+$box-bg: #aaa;
+$bg-modal: #abc;
+
+body {
+  background-color: $bg;
+}
 .hidden {
   display: none;
+}
+
+#app {
+  #main {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $box-bg;
+    padding: 10px;
+
+    h1 {
+      margin: 0;
+      text-align: center;
+    }
+
+    .add {
+      color: red;
+      padding: 20px;
+    }
+
+    @import "modal";
+    @import "recipe";
+  }
 }

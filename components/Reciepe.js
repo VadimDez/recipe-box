@@ -12,8 +12,8 @@ class Reciepe extends React.Component {
     });
 
     return (
-      <div>
-        <div>Name: {this.props.recipe.name}</div>
+      <div className="recipe">
+        <div className="name">{this.props.recipe.name}</div>
         <div>Ingredients</div>
         <div>
           { ingredients }

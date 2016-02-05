@@ -1,0 +1,12 @@
+$bg-recipe: #fff;
+
+.recipe {
+  border: 1px solid black;
+  padding: 5px;
+  background-color: $bg-recipe;
+
+  .name {
+    background: red;
+    color: #fff;
+  }
+}
