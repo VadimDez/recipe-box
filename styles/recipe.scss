@@ -1,12 +1,25 @@
-$bg-recipe: #fff;
+$bg-recipe: #5DA1B8;
 
 .recipe {
-  border: 1px solid black;
   padding: 5px;
   background-color: $bg-recipe;
+  margin-bottom: 10px;
 
   .name {
-    background: red;
     color: #fff;
+    font-size: 20px;
+  }
+
+  .ingredients-title {
+
+  }
+
+  .ingredient {
+
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: darken($bg-recipe, 5);
   }
 }

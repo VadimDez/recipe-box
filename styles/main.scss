@@ -1,11 +1,15 @@
 // colors
-$bg: #fff;
-$box-bg: #aaa;
+$bg: #304C6C;
+$box-bg: darken($bg, 5);
 $bg-modal: #abc;
+$font-color: #fff;
+$bg-add: #6297AA;
 
 body {
   background-color: $bg;
+  color: $font-color;
 }
+
 .hidden {
   display: none;
 }
@@ -24,8 +28,21 @@ body {
     }
 
     .add {
-      color: red;
       padding: 20px;
+      background-color: $bg-add;
+      margin-bottom: 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: darken($bg-add, 5);
+      }
+    }
+
+    .btn {
+      cursor: pointer;
+      padding: 5px 10px;
+      border: none;
+      margin-right: 2px;
+      background-color: #fff;
     }
 
     @import "modal";

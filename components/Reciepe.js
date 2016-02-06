@@ -14,12 +14,12 @@ class Reciepe extends React.Component {
     return (
       <div className="recipe">
         <div className="name">{this.props.recipe.name}</div>
-        <div>Ingredients</div>
-        <div>
+        <div className="ingredients-title">Ingredients</div>
+        <div className="ingredient">
           { ingredients }
         </div>
-        <button onClick={this.props.remove}>Delete</button>
-        <button onClick={this.props.edit}>Edit</button>
+        <button className="btn" onClick={this.props.remove}>Delete</button>
+        <button className="btn" onClick={this.props.edit}>Edit</button>
       </div>
     )
   }
