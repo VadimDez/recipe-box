@@ -30,8 +30,13 @@ class Modal extends React.Component {
 
       <div className={'modal-container ' + ((this.props.active) ? '' : 'hidden')}>
         <div className={'modal'}>
+          <div className="title">
+            <h3>{ this.props.title }</h3>
+          </div>
           <div>
-            <label>Name</label>
+            Name
+          </div>
+          <div>
             <input
               type="text"
               onChange={this.updateValue('name')}
@@ -40,7 +45,9 @@ class Modal extends React.Component {
           </div>
 
           <div>
-            <label>Ingredients</label>
+            Ingredients
+          </div>
+          <div>
             <input
               type="text"
               onChange={this.updateValue('ingredients')}
@@ -48,8 +55,9 @@ class Modal extends React.Component {
             />
           </div>
 
-          <div>
+          <div className="actions">
             <button
+              className="btn"
               onClick={() => {
               this.props.save(this.recipe);
 
@@ -59,7 +67,12 @@ class Modal extends React.Component {
             }}>
               { this.props.text }
             </button>
-            <button onClick={this.props.cancel}>Cancel</button>
+            <button
+              className="btn"
+              onClick={this.props.cancel}
+            >
+              Cancel
+            </button>
           </div>
         </div>
       </div>

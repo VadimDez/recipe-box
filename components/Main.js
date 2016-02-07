@@ -107,6 +107,7 @@ class Main extends React.Component {
 
         <Modal
           active={state.modals.addModal}
+          title='Add new recipe'
           save={this.addRecipe.bind(this)}
           text={'Add'}
           cancel={this.closeAddModal.bind(this)}
@@ -114,6 +115,7 @@ class Main extends React.Component {
 
         <Modal
           active={state.modals.editModal}
+          title='Edit recipe'
           recipe={state.recipes[state.modals.editKey]}
           save={this.modifyRecipe.bind(this)}
           text={'Edit'}
