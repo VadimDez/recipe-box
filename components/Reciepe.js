@@ -5,7 +5,10 @@ import React from 'react';
 
 class Reciepe extends React.Component {
   render() {
-    var ingredients = this.props.recipe.ingredients.split(',') || [];
+    var ingredients = [];
+    if (this.props.recipe.ingredients) {
+      ingredients = this.props.recipe.ingredients.split(',');
+    }
 
     ingredients = ingredients.map(function (name, k) {
       return <div key={k}>{name}</div>
