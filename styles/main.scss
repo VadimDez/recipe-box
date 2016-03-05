@@ -1,5 +1,5 @@
 // colors
-$bg: #304C6C;
+$bg: #ffab5c;
 $box-bg: darken($bg, 5);
 $bg-modal: #abc;
 $font-color: #fff;
@@ -8,6 +8,7 @@ $bg-add: #6297AA;
 body {
   background-color: $bg;
   color: $font-color;
+  font-family: 'Roboto', sans-serif;
 }
 
 .hidden {
@@ -19,12 +20,12 @@ body {
     width: 600px;
     margin-left: auto;
     margin-right: auto;
-    background-color: $box-bg;
     padding: 10px;
 
     h1 {
       margin: 0;
       text-align: center;
+      color: #565656;
     }
 
     .add {

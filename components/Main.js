@@ -98,7 +98,7 @@ class Main extends React.Component {
           <h1>Recipe box</h1>
         </div>
         <div className="add" onClick={this.openAddModal.bind(this)}>
-          + Add
+          <i className="fa fa-plus"></i> Add
         </div>
         <List
           remove={this.removeRecipe.bind(this)}

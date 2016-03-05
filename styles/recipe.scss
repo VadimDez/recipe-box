@@ -1,25 +1,43 @@
-$bg-recipe: #5DA1B8;
+$recipe-bg: #fff;
+$recipe-font: #000;
 
 .recipe {
-  padding: 5px;
-  background-color: $bg-recipe;
+  position: relative;
+  padding: 11px;
+  background-color: $recipe-bg;
   margin-bottom: 10px;
+  color: $recipe-font;
+  border-radius: 7px;
 
   .name {
-    color: #fff;
-    font-size: 20px;
-  }
-
-  .ingredients-title {
-
+    font-size: 16px;
+    font-weight: bold;
   }
 
   .ingredient {
+    font-size: 14px;
+  }
 
+  .actions {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+
+    button {
+      background-color: darken($recipe-bg, 5);
+
+      &.delete {
+        color: red;
+      }
+    }
   }
 
   &:hover {
     cursor: pointer;
-    background-color: darken($bg-recipe, 5);
+    background-color: darken($recipe-bg, 5);
+    .actions {
+      display: block;
+    }
   }
 }

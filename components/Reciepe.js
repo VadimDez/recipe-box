@@ -11,18 +11,19 @@ class Reciepe extends React.Component {
     }
 
     ingredients = ingredients.map(function (name, k) {
-      return <div key={k}>{name}</div>
+      return <span key={k}>{name}</span>
     });
 
     return (
       <div className="recipe">
         <div className="name">{this.props.recipe.name}</div>
-        <div className="ingredients-title">Ingredients</div>
         <div className="ingredient">
           { ingredients }
         </div>
-        <button className="btn" onClick={this.props.remove}>Delete</button>
-        <button className="btn" onClick={this.props.edit}>Edit</button>
+        <div className="actions">
+          <button className="btn edit" onClick={this.props.edit}><i className="fa fa-pencil"></i></button>
+          <button className="btn delete" onClick={this.props.remove}><i className="fa fa-trash"></i></button>
+        </div>
       </div>
     )
   }
