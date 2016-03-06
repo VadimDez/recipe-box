@@ -34,20 +34,15 @@ class Modal extends React.Component {
             <h3>{ this.props.title }</h3>
           </div>
           <div>
-            Name
-          </div>
-          <div>
+            <label htmlFor="">Name</label>
             <input
               type="text"
               onChange={this.updateValue('name')}
               value={this.recipe.name}
             />
           </div>
-
           <div>
-            Ingredients
-          </div>
-          <div>
+            <label htmlFor="">Ingredients</label>
             <input
               type="text"
               onChange={this.updateValue('ingredients')}

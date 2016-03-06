@@ -1,9 +1,9 @@
 // colors
 $bg: #ffab5c;
 $box-bg: darken($bg, 5);
-$bg-modal: #abc;
+$bg-modal: #ffffff;
 $font-color: #fff;
-$bg-add: #6297AA;
+$header-font-color: #565656;
 
 body {
   background-color: $bg;
@@ -17,24 +17,30 @@ body {
 
 #app {
   #main {
-    width: 600px;
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
 
-    h1 {
-      margin: 0;
-      text-align: center;
-      color: #565656;
-    }
+    header {
+      color: $header-font-color;
+      h1 {
+        margin: 0;
+        text-align: center;
+        font-size: 24px;
+      }
 
-    .add {
-      padding: 20px;
-      background-color: $bg-add;
-      margin-bottom: 10px;
-      cursor: pointer;
-      &:hover {
-        background-color: darken($bg-add, 5);
+      .add {
+        padding-top: 4px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        float: right;
+        &:hover {
+          color: darken($header-font-color, 5);
+        }
+      }
+
+      > div {
+        display: inline-block;
       }
     }
 
@@ -48,5 +54,9 @@ body {
 
     @import "modal";
     @import "recipe";
+
+    @media (min-width: 620px) {
+      width: 600px;
+    }
   }
 }

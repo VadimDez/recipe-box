@@ -94,12 +94,14 @@ class Main extends React.Component {
 
     return (
       <div id="main">
-        <div>
-          <h1>Recipe box</h1>
-        </div>
-        <div className="add" onClick={this.openAddModal.bind(this)}>
-          <i className="fa fa-plus"></i> Add
-        </div>
+        <header>
+          <div>
+            <h1>Recipe box</h1>
+          </div>
+          <div className="add" onClick={this.openAddModal.bind(this)}>
+            <i className="fa fa-plus"></i> Add
+          </div>
+        </header>
         <List
           remove={this.removeRecipe.bind(this)}
           edit={this.editRecipe.bind(this)}
