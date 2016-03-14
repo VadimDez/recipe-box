@@ -54,7 +54,9 @@ const modals = (state = {addModal: false, editModal: false, editKey: null}, acti
       editModal: false,
       editKey: null
     });
-  } else if (action.type === actionTypes.EDIT_MODAL_ACTION) {
+  }
+
+  if (action.type === actionTypes.EDIT_MODAL_ACTION) {
     // show/hide edit modal, and hide addModal
     return Object.assign({}, state, {
       editModal: action.isOpen,

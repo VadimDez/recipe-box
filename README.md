@@ -1,7 +1,19 @@
-#Recipe box
+# Recipe box
 
-React project
+React project, part of FFC basejumps projects.
 
+The application for managing your recipes. Allows you to save your recipes in browser's *localSotrage*,
+delete, modify or simply review them later.
+
+## Uses
+ 
+ * React
+ 
+ * Redux
+ 
+ * SCSS
+ 
+ * localStorage
 
 ## Install
 
@@ -9,7 +21,7 @@ React project
 npm i
 ```
 
-## Run-dev
+## Running the project [dev]
 
 ```
 ./node_modules/webpack-dev-server/bin/webpack-dev-server.js
