@@ -24,7 +24,7 @@ npm i
 ## Running the project [dev]
 
 ```
-./node_modules/webpack-dev-server/bin/webpack-dev-server.js
+npm run serve
 ```
 
 and then open in browser
