@@ -5,23 +5,20 @@ React project, part of FFC basejumps projects.
 The application for managing your recipes. Allows you to save your recipes in browser's *localSotrage*,
 delete, modify or simply review them later.
 
-## Uses
+### Uses
  
  * React
- 
  * Redux
- 
  * SCSS
- 
  * localStorage
 
-## Install
+### Install
 
 ```
 npm i
 ```
 
-## Running the project [dev]
+### Running the project [dev]
 
 ```
 npm run serve
