@@ -7,9 +7,9 @@ import React from 'react';
 class Modal extends React.Component {
 
   constructor() {
-    super()
+    super();
 
-    this.recipe = {name: '', ingredients: ''}
+    this.recipe = {name: '', ingredients: ''};
   }
 
   updateValue(field) {

@@ -5,11 +5,12 @@
 import React from 'react';
 import List from './List';
 import Modal from './Modal';
+import * as actionTypes from './../constants/actionTypes';
 
 class Main extends React.Component {
 
   componentDidMount() {
-    const store = this.context.store
+    const store = this.context.store;
 
     this.unsubscribe = store.subscribe(() => {
       this.forceUpdate()
@@ -25,7 +26,7 @@ class Main extends React.Component {
    */
   addRecipe(recipe) {
     this.store.dispatch({
-      type: 'ADD_RECIPE',
+      type: actionTypes.ADD_RECIPE,
       name: recipe.name,
       ingredients: recipe.ingredients
     });
@@ -38,7 +39,7 @@ class Main extends React.Component {
    */
   modifyRecipe(recipe) {
     this.store.dispatch({
-      type: 'EDIT_RECIPE',
+      type: actionTypes.EDIT_RECIPE,
       name: recipe.name,
       ingredients: recipe.ingredients,
       editKey: this.store.getState().modals.editKey
@@ -52,7 +53,7 @@ class Main extends React.Component {
    */
   removeRecipe(key) {
     this.store.dispatch({
-      type: 'DELETE_RECIPE',
+      type: actionTypes.DELETE_RECIPE,
       key: key
     });
   }
@@ -63,7 +64,7 @@ class Main extends React.Component {
 
   addModal(value) {
     this.store.dispatch({
-      type: 'ADD_MODAL_ACTION',
+      type: actionTypes.ADD_MODAL_ACTION,
       isOpen: value
     })
   }
@@ -78,7 +79,7 @@ class Main extends React.Component {
 
   editModal(value, key) {
     this.store.dispatch({
-      type: 'EDIT_MODAL_ACTION',
+      type: actionTypes.EDIT_MODAL_ACTION,
       isOpen: value,
       editKey: key
     })
