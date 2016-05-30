@@ -5,6 +5,8 @@ React project, part of FFC basejumps projects.
 The application for managing your recipes. Allows you to save your recipes in browser's *localSotrage*,
 delete, modify or simply review them later.
 
+[Demo page](http://vadimdez.github.io/recipe-box/)
+
 ### Uses
  
  * React
