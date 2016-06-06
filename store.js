@@ -2,18 +2,25 @@
  * Created by vadimdez on 27/01/16.
  */
 
-import {createStore} from 'redux';
-import {combineReducers} from 'redux';
+import { createStore, combineReducers } from 'redux';
 import * as actionTypes from './constants/actionTypes';
 
-
-var recipesFromLocalStorage = localStorage.getItem('recipes');
+const RECIPES_KEY = 'recipes';
+var recipesFromLocalStorage = localStorage.getItem(RECIPES_KEY);
 
 if (!recipesFromLocalStorage || recipesFromLocalStorage === 'undefined') {
   recipesFromLocalStorage = [];
 } else {
   recipesFromLocalStorage = JSON.parse(recipesFromLocalStorage);
 }
+
+/**
+ * Save recipes to local storage
+ * @param recipes
+ */
+const saveRecipes = recipes => {
+  localStorage.setItem(RECIPES_KEY, JSON.stringify(recipes));
+};
 
 const recipes = (state = recipesFromLocalStorage, action) => {
   let newState;
@@ -23,14 +30,14 @@ const recipes = (state = recipesFromLocalStorage, action) => {
       .slice(0, action.key)
       .concat(state.slice(action.key + 1));
 
-    localStorage.setItem('recipes', JSON.stringify(newState));
+    saveRecipes(newState);
   } else if (action.type === actionTypes.ADD_RECIPE) {
     newState = state.concat({
       name: action.name,
       ingredients: action.ingredients
     });
 
-    localStorage.setItem('recipes', JSON.stringify(newState));
+    saveRecipes(newState);
   } else if (action.type === actionTypes.EDIT_RECIPE) {
     newState = state
       .slice(0, action.editKey)
@@ -39,7 +46,8 @@ const recipes = (state = recipesFromLocalStorage, action) => {
         ingredients: action.ingredients
       })
       .concat(state.slice(action.editKey + 1));
-    localStorage.setItem('recipes', JSON.stringify(newState));
+
+    saveRecipes(newState);
   }
 
   return newState || state;
