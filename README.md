@@ -29,3 +29,8 @@ npm run serve
 and then open in browser
 
 [http://localhost:9000](http://localhost:9000)
+
+
+### License
+
+MIT © [Vadym Yatsyuk](https://github.com/vadimdez)
