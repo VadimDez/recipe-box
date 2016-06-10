@@ -33,4 +33,4 @@ and then open in browser
 
 ### License
 
-MIT © [Vadym Yatsyuk](https://github.com/vadimdez)
+[MIT](https://tldrlegal.com/license/mit-license) © [Vadym Yatsyuk](https://github.com/vadimdez)
