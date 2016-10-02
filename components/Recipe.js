@@ -3,7 +3,7 @@
  */
 import React from 'react';
 
-class Reciepe extends React.Component {
+export class Recipe extends React.Component {
   render() {
     return (
       <div className="recipe">
@@ -19,5 +19,3 @@ class Reciepe extends React.Component {
     )
   }
 }
-
-export default Reciepe;

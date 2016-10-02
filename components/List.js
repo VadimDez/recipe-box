@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import Reciepe from './Reciepe';
+import { Recipe } from './Recipe';
 
 const List = ({remove, edit}, { store }) => {
   return (
@@ -11,10 +11,11 @@ const List = ({remove, edit}, { store }) => {
       {
         store.getState().recipes.map((recipe, k) => {
           return (
-            <Reciepe
+            <Recipe
               remove={remove.bind(this, k)}
               edit={edit.bind(this, k)}
-              recipe={recipe} key={k} />
+              recipe={recipe} key={k}
+            />
           );
         })
       }
