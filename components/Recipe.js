@@ -12,8 +12,8 @@ export class Recipe extends React.Component {
           { this.props.recipe.ingredients }
         </div>
         <div className="actions">
-          <button className="btn edit" onClick={this.props.edit}><i className="fa fa-pencil"></i></button>
-          <button className="btn delete" onClick={this.props.remove}><i className="fa fa-trash"></i></button>
+          <button className="btn edit" onClick={ this.props.edit }><i className="fa fa-pencil"></i></button>
+          <button className="btn delete" onClick={ this.props.remove }><i className="fa fa-trash"></i></button>
         </div>
       </div>
     )

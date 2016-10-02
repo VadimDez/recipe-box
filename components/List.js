@@ -12,9 +12,10 @@ const List = ({remove, edit}, { store }) => {
         store.getState().recipes.map((recipe, k) => {
           return (
             <Recipe
-              remove={remove.bind(this, k)}
-              edit={edit.bind(this, k)}
-              recipe={recipe} key={k}
+              remove={ remove.bind(this, k) }
+              edit={ edit.bind(this, k) }
+              recipe={ recipe }
+              key={ k }
             />
           );
         })

@@ -9,7 +9,11 @@ class Modal extends React.Component {
   constructor() {
     super();
 
-    this.recipe = {name: '', ingredients: ''};
+    this.recipe = this.getEmptyRecipe();
+  }
+
+  getEmptyRecipe() {
+    return { name: '', ingredients: '' };
   }
 
   updateValue(field) {
@@ -21,7 +25,7 @@ class Modal extends React.Component {
 
   componentWillReceiveProps() {
     const state = this.context.store.getState();
-    this.recipe = state.recipes[state.modals.editKey] || {name: '', ingredients: ''};
+    this.recipe = state.recipes[state.modals.editKey] || this.getEmptyRecipe();
     this.isNew = !isNaN(state.modals.editKey);
   }
 
@@ -29,7 +33,7 @@ class Modal extends React.Component {
     return (
 
       <div className={'modal-container ' + ((this.props.active) ? '' : 'hidden')}>
-        <div className={'modal'}>
+        <div className={ 'modal' }>
           <div className="title">
             <h3>{ this.props.title }</h3>
           </div>
@@ -37,16 +41,16 @@ class Modal extends React.Component {
             <label htmlFor="">Name</label>
             <input
               type="text"
-              onChange={this.updateValue('name')}
-              value={this.recipe.name}
+              onChange={ this.updateValue('name') }
+              value={ this.recipe.name }
             />
           </div>
           <div>
             <label htmlFor="">Ingredients</label>
             <input
               type="text"
-              onChange={this.updateValue('ingredients')}
-              value={this.recipe.ingredients}
+              onChange={ this.updateValue('ingredients') }
+              value={ this.recipe.ingredients }
             />
           </div>
 
@@ -57,7 +61,7 @@ class Modal extends React.Component {
               this.props.save(this.recipe);
 
               if (this.isNew) {
-                this.recipe = {name: '', ingredients: ''}
+                this.recipe = this.getEmptyRecipe()
               }
             }}>
               { this.props.text }
