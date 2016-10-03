@@ -5,6 +5,7 @@
 import React from 'react';
 import List from './List';
 import Modal from './Modal';
+import { Footer } from './Footer';
 import * as actionTypes from './../constants/actionTypes';
 
 class Main extends React.Component {
@@ -107,6 +108,8 @@ class Main extends React.Component {
           remove={this.removeRecipe.bind(this)}
           edit={this.editRecipe.bind(this)}
         />
+
+        <Footer />
 
         <Modal
           active={state.modals.addModal}
